@@ -4,7 +4,6 @@ namespace RecommenderSystem
 {
 	class Matrix
 	{
-
 		public double[,] Data { get; set; }
 		public int RowCount { get; set; }
 		public int ColumnCount { get; set; }
@@ -27,7 +26,7 @@ namespace RecommenderSystem
 		{
 			RowCount = rows;
 			ColumnCount = columns;
-			Data = data;
+			Fill(data);
 		}
 
 
@@ -76,7 +75,8 @@ namespace RecommenderSystem
 			{
 				for (int j = 0; j < rightFactor.ColumnCount; j++)
 				{
-					double sum = new double();
+					double sum = 0;
+
 					for (int k = 0; k < rightFactor.RowCount; k++)
 					{
 						double leftValue = leftFactor.Data[i, k];

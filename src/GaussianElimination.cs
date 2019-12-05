@@ -12,11 +12,12 @@ namespace RecommenderSystem
 
 				for (int k = 0; k < matrix.ColumnCount; k++)
 					matrix.Data[j, k] -= matrix.Data[i, k] * m;
+
 				vector.Data[j, 0] -= vector.Data[i, 0] * m;
 			}
 		}
 
-		public Matrix EliminateWithPartialPivoting(Matrix matrix, Matrix vector)
+		public Matrix Calculate(Matrix matrix, Matrix vector)
 		{
 			for (int i = 0; i < matrix.RowCount; i++)
 			{
@@ -33,10 +34,11 @@ namespace RecommenderSystem
 
 			for (int i = matrix.RowCount - 1; i >= 0; i--)
 			{
-				double sum = new double();
+				double sum = 0;
 
 				for (int j = i + 1; j < matrix.RowCount; j++)
 					sum += matrix.Data[i, j] * results.Data[j, 0];
+
 				results.Data[i, 0] = (vector.Data[i, 0] - sum) / matrix.Data[i, i];
 			}
 
@@ -53,5 +55,4 @@ namespace RecommenderSystem
 				}
 		}
 	}
-}
 }

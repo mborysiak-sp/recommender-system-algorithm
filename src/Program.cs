@@ -6,7 +6,21 @@ namespace RecommenderSystem
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("Hello World!");
+			Matrix a = new Matrix(3);
+
+			a.Fill();
+
+			Matrix x = new Matrix(3, 1);
+
+			x.Fill();
+
+			Matrix b = a * x;
+
+			GaussianElimination gaussianElimination = new GaussianElimination();
+
+			Console.WriteLine($"Calculated X: {gaussianElimination.Calculate(a, b)}");
+
+			Console.WriteLine($"Original X: {x}");
 		}
 	}
 }
