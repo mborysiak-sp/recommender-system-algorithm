@@ -11,12 +11,12 @@ namespace RecommenderSystem
 
     class RMatrix
     {
-        Dictionary<Tuple<int,int>, int> rates;
+        Dictionary<Tuple<int,int>, int> ratings;
         int u, p;
 
         public RMatrix()
         {
-            this.rates = new Dictionary<Tuple<int, int>, int>();
+            this.ratings = new Dictionary<Tuple<int, int>, int>();
         }
 
         public void setSize(int u, int p)
@@ -28,8 +28,13 @@ namespace RecommenderSystem
         public void Add(int u, int p, int r)
         {
             var temp = Tuple.Create(u, p);
-            if (!rates.ContainsKey(temp))
-                rates.Add(temp, r);
+            if (!ratings.ContainsKey(temp))
+                ratings.Add(temp, r);
+            if (!ratings.ContainsKey(temp))
+            {
+                this.ratings.Add(temp, r);
+            }
+
         }
 
         public int this[int u, int p] => Search(u, p);
@@ -37,12 +42,71 @@ namespace RecommenderSystem
         private int Search(int u, int p)
         {
             var search = Tuple.Create(u, p);
-            if (!rates.ContainsKey(search))
+            if (!ratings.ContainsKey(search))
                 return 0;
-            return rates[search];
+            return ratings[search];
         }
 
-        public void checkFillDegree()
+
+        public List<int> FindAllProductsRatedByUser(int u)
+        {
+            List<int> list = new List<int>();
+
+            for (int i = 0; i < p; i++)
+            {
+                if(Search(u, i) != 0)
+                {
+                    list.Add(i);
+                }
+            }
+
+            return list;
+        }
+
+        public List<int> FindAllUsersWhoRatedProduct(int p)
+        {
+            List<int> list = new List<int>();
+
+            for (int i = 0; i < u; i++)
+            {
+                if (Search(i, p) != 0)
+                {
+                    list.Add(i);
+                }
+            }
+
+            return list;
+        }
+
+
+
+        public Dictionary<Tuple<int, int>, int> PrepareToHidingTest(int percent)
+        {
+            var listOfHiddenRatings = new Dictionary<Tuple<int, int>, int>();
+
+            double total = 0;
+
+            foreach (KeyValuePair<Tuple<int, int>, int> rating in ratings)
+            {
+                if(total > 100)
+                {
+                    listOfHiddenRatings.Add(rating.Key, rating.Value);
+                    total -= 100;
+                }
+                total += percent;
+            }
+
+            foreach (KeyValuePair<Tuple<int, int>, int> rating in listOfHiddenRatings)
+            {
+                ratings.Remove(rating.Key);
+            }
+
+            return listOfHiddenRatings;
+        }
+
+
+
+        public void CheckFillDegree()
         {
             double notEmpty = 0;
             double all = 0;

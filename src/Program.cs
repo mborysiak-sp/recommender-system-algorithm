@@ -29,6 +29,19 @@ namespace RecommenderSystem
 
 			Console.WriteLine($"Original X: {x}");
 			*/
+
+
+			/*
+            RMatrix R = Extractor.createR(10000, 100);
+
+            var test1 = R.FindAllProductsRatedByUser(150);
+            var test2 = R.FindAllUsersWhoRatedProduct(0);
+            RMatrix R2 = R;
+
+            var test3 = R.PrepareToHidingTest(2);
+            Console.WriteLine();
+*/
+
 		}
 	}
 }
