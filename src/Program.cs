@@ -21,6 +21,8 @@ namespace RecommenderSystem
 			Console.WriteLine($"Calculated X: {gaussianElimination.Calculate(a, b)}");
 
 			Console.WriteLine($"Original X: {x}");
+
+            Extractor.createR(100000, 100);
 		}
 	}
 }
