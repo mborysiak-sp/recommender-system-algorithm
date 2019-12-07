@@ -29,21 +29,17 @@ namespace RecommenderSystem
         {
             var temp = Tuple.Create(u, p);
             if (!rates.ContainsKey(temp))
-                this.rates.Add(temp, r);
+                rates.Add(temp, r);
         }
 
-        public int this[int u, int p]
-        {
-            get { return Search(u, p); }
-        }
+        public int this[int u, int p] => Search(u, p);
 
         private int Search(int u, int p)
         {
             var search = Tuple.Create(u, p);
             if (!rates.ContainsKey(search))
                 return 0;
-            else
-                return rates[search];
+            return rates[search];
         }
 
         public void checkFillDegree()
@@ -59,9 +55,7 @@ namespace RecommenderSystem
                     all++;
                 }
             }
-
             Console.WriteLine("\t{0:N2} % Matrix Filled (no duplicates)", notEmpty/all * 100);
         }
-
     }
 }

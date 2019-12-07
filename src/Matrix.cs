@@ -87,6 +87,7 @@ namespace RecommenderSystem
 					product.Data[i, j] = sum;
 				}
 			}
+			
 			return product;
 		}
 
@@ -97,6 +98,34 @@ namespace RecommenderSystem
 				double tmp = Data[row1, i];
 				Data[row1, i] = Data[row2, i];
 				Data[row2, i] = tmp;
+			}
+		}
+
+		public Matrix GetTransposed() 
+		{
+			var transposedMatrix = new Matrix(ColumnCount,RowCount);
+			
+			for (int i = 0; i < RowCount; i++) 
+			{
+				for (int j = 0; j < ColumnCount; j++) 
+				{
+					transposedMatrix.Data[j, i] = Data[i, j];
+				}
+			}
+
+			return transposedMatrix;
+		}
+
+		public void AddLambdaMatrix(double lambda) 
+		{
+			for (int i = 0; i < RowCount; i++) 
+			{
+				for (int j = 0; j < ColumnCount; j++) 
+				{
+					if (i == j) {
+						Data[j, i] += lambda;
+					}
+				}
 			}
 		}
 
@@ -111,6 +140,7 @@ namespace RecommenderSystem
 				}
 				result += "\n";
 			}
+			
 			return result;
 		}
 	}
