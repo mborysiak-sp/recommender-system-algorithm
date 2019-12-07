@@ -23,6 +23,8 @@ namespace RecommenderSystem
 			Console.WriteLine($"Original X: {x}");
 
             Extractor.createR(100000, 100);
+
+
 		}
 	}
 }
