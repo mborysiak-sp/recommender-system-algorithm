@@ -118,7 +118,6 @@ namespace RecommenderSystem
                     }
                     Console.WriteLine($"p = {p}");
                 }
-                Console.WriteLine($"Iteracja {k + 1}:");
                 ObjectiveFunction.Calculate(R, U, P, lambda);
             }
         }
