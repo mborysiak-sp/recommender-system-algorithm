@@ -28,13 +28,10 @@ namespace RecommenderSystem
         public void Add(int u, int p, int r)
         {
             var temp = Tuple.Create(u, p);
-            if (!ratings.ContainsKey(temp))
-                ratings.Add(temp, r);
-            if (!ratings.ContainsKey(temp))
+            if (!ratings.ContainsKey(temp)) 
             {
-                this.ratings.Add(temp, r);
+                ratings.Add(temp, r);
             }
-
         }
 
         public int this[int u, int p] => Search(u, p);
@@ -43,7 +40,9 @@ namespace RecommenderSystem
         {
             var search = Tuple.Create(u, p);
             if (!ratings.ContainsKey(search))
+            {
                 return 0;
+            }
             return ratings[search];
         }
 
@@ -107,10 +106,12 @@ namespace RecommenderSystem
             double all = 0;
             for (int i = 0; i < u; i++)
             {
-                for (int j = 0; j < p; j++)
+                for (int j = 0; j < p; j++) 
                 {
-                    if (Search(i, j) != 0)
+                    if (Search(i, j) != 0) 
+                    {
                         notEmpty++;
+                    }
                     all++;
                 }
             }

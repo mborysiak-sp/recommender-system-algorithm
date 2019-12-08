@@ -8,10 +8,7 @@ public class Matrix
 		public double[,] Data { get; set; }
 		public int RowCount { get; set; }
 		public int ColumnCount { get; set; }
-
-        // boję się to zmieniać bo nw czy w GaussianElimination czy nawet tu w Matrix to czegoś nie zepsuje
-        // po prostu bym przestawił to wypełnianie do osobnej funkcji
-        // FillWithRandoms czy coś
+		
 		public Matrix(int rows, int columns)
 		{
 			RowCount = rows;
@@ -65,10 +62,11 @@ public class Matrix
 			}
 		}
 
-		public static Matrix operator *(Matrix leftFactor, Matrix rightFactor)
+		public static Matrix operator *(Matrix leftFactor, Matrix rightFactor) 
 		{
-			if (leftFactor.ColumnCount != rightFactor.RowCount)
+			if (leftFactor.ColumnCount != rightFactor.RowCount) {
 				throw new ArgumentException("Cannot multiply, invalid size of matrices");
+			}
 
 			Matrix product = new Matrix(leftFactor.RowCount, rightFactor.ColumnCount);
 			for (int i = 0; i < leftFactor.RowCount; i++)
@@ -118,14 +116,9 @@ public class Matrix
 
 		public void AddLambdaMatrix(double lambda) 
 		{
-			for (int i = 0; i < RowCount; i++) 
+			for(int i=0; i < Math.Min(RowCount, ColumnCount); i++)
 			{
-				for (int j = 0; j < ColumnCount; j++) 
-				{
-					if (i == j) {
-						Data[j, i] += lambda;
-					}
-				}
+				Data[i, i] += lambda;
 			}
 		}
 

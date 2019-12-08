@@ -31,8 +31,10 @@ namespace RecommenderSystem
                     
                     Matrix Piu = new Matrix(countOfFactors, productsRatedByU.Count);
 
-                    for (int i = 0; i < productsRatedByU.Count; i++) {
-                        for (int row = 0; row < countOfFactors; row++) {
+                    for (int i = 0; i < productsRatedByU.Count; i++) 
+                    {
+                        for (int row = 0; row < countOfFactors; row++) 
+                        {
                             Piu.Data[row, i] = P.Data[row, productsRatedByU[i]];
                         }
                     }

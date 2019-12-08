@@ -10,8 +10,10 @@ namespace RecommenderSystem
 			{
 				double m = matrix.Data[j, i] / matrix.Data[i, i];
 
-				for (int k = 0; k < matrix.ColumnCount; k++)
+				for (int k = 0; k < matrix.ColumnCount; k++) 
+				{
 					matrix.Data[j, k] -= matrix.Data[i, k] * m;
+				}
 
 				vector.Data[j, 0] -= vector.Data[i, 0] * m;
 			}
@@ -32,27 +34,31 @@ namespace RecommenderSystem
 		{
 			var results = new Matrix(matrix.RowCount, 1);
 
-			for (int i = matrix.RowCount - 1; i >= 0; i--)
+			for (int i = matrix.RowCount - 1; i >= 0; i--) 
 			{
 				double sum = 0;
 
-				for (int j = i + 1; j < matrix.RowCount; j++)
+				for (int j = i + 1; j < matrix.RowCount; j++) 
+				{
 					sum += matrix.Data[i, j] * results.Data[j, 0];
-
+				}
+				
 				results.Data[i, 0] = (vector.Data[i, 0] - sum) / matrix.Data[i, i];
 			}
 
 			return results;
 		}
 
-		private static void PartialPivot(Matrix matrix, Matrix vector, int p)
+		private static void PartialPivot(Matrix matrix, Matrix vector, int p) 
 		{
-			for (int j = p; j < matrix.RowCount; j++)
-				if (Math.Abs(matrix.Data[p, p]) < Math.Abs(matrix.Data[j, p]))
+			for (int j = p; j < matrix.RowCount; j++) 
+			{
+				if (Math.Abs(matrix.Data[p, p]) < Math.Abs(matrix.Data[j, p])) 
 				{
 					matrix.SwapRows(p, j);
 					vector.SwapRows(p, j);
 				}
+			}
 		}
 	}
 }
