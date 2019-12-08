@@ -12,7 +12,7 @@ namespace RecommenderSystem
     class RMatrix
     {
         Dictionary<Tuple<int,int>, int> ratings;
-        int u, p;
+        public int u, p;
 
         public RMatrix()
         {
