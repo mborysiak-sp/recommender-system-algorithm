@@ -77,7 +77,7 @@ namespace RecommenderSystem
 			return list;
 		}
 
-		public Dictionary<Tuple<int, int>, int> PrepareToHidingTest(int percent)
+		public Dictionary<Tuple<int, int>, int> PrepareToHidingTest(double percent)
 		{
 			var listOfHiddenRatings = new Dictionary<Tuple<int, int>, int>();
 
