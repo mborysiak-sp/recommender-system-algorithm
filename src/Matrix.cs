@@ -51,8 +51,9 @@ public class Matrix
 		{
 			double result = 0;
 
-			if (ColumnCount != 1)
+			if (ColumnCount != 1) {
 				return result;
+			}
 			else
 			{
 				foreach (double value in Data)
@@ -64,7 +65,8 @@ public class Matrix
 
 		public static Matrix operator *(Matrix leftFactor, Matrix rightFactor) 
 		{
-			if (leftFactor.ColumnCount != rightFactor.RowCount) {
+			if (leftFactor.ColumnCount != rightFactor.RowCount) 
+			{
 				throw new ArgumentException("Cannot multiply, invalid size of matrices");
 			}
 
@@ -116,7 +118,7 @@ public class Matrix
 
 		public void AddLambdaMatrix(double lambda) 
 		{
-			for(int i=0; i < Math.Min(RowCount, ColumnCount); i++)
+			for(int i = 0; i < Math.Min(RowCount, ColumnCount); i++)
 			{
 				Data[i, i] += lambda;
 			}

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.VisualBasic.CompilerServices;
 
 namespace RecommenderSystem
 {
@@ -14,7 +15,9 @@ namespace RecommenderSystem
 			{
 				for (int p = 0; p < P.ColumnCount; p++)
 				{
-					firstSum += Math.Pow(R[u, p] - (U.GetTransposed().GetVector(u) * P.GetVector(p)).Data[0, 0], 2);
+					Console.WriteLine($"first sum = {firstSum}");
+					firstSum += Math.Pow(R[u, p] - (U.GetTransposed().GetVector(u) * P.GetVector(p) ).Data[0, 0], 2);
+					Console.WriteLine($"first sum = {firstSum}");
 				}
 			}
 
