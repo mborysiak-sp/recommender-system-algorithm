@@ -3,7 +3,7 @@ using System.Numerics;
 
 namespace RecommenderSystem
 {
-	class Matrix
+public class Matrix
 	{
 		public double[,] Data { get; set; }
 		public int RowCount { get; set; }
@@ -59,13 +59,7 @@ namespace RecommenderSystem
 
 		public void Fill(double[,] numbers)
 		{
-			for (int i = 0; i < RowCount; i++)
-			{
-				for (int j = 0; j < ColumnCount; j++)
-				{
-					Data[i, j] = numbers[i, j];
-				}
-			}
+			Data = numbers;
 		}
 
 		public void Fill()

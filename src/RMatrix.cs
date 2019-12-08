@@ -16,7 +16,7 @@ namespace RecommenderSystem
 
         public RMatrix()
         {
-            this.ratings = new Dictionary<Tuple<int, int>, int>();
+            ratings = new Dictionary<Tuple<int, int>, int>();
         }
 
         public void setSize(int u, int p)
@@ -47,7 +47,6 @@ namespace RecommenderSystem
             return ratings[search];
         }
 
-
         public List<int> FindAllProductsRatedByUser(int u)
         {
             List<int> list = new List<int>();
@@ -77,7 +76,7 @@ namespace RecommenderSystem
 
             return list;
         }
-
+      
         public Dictionary<Tuple<int, int>, int> PrepareToHidingTest(int percent)
         {
             var listOfHiddenRatings = new Dictionary<Tuple<int, int>, int>();

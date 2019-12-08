@@ -179,7 +179,6 @@ namespace RecommenderSystem
         }
     }
 
-
     class Item : IComparable<Item>
     {
         public int ItemID { get; set; }
@@ -210,7 +209,6 @@ namespace RecommenderSystem
             return Rates.Count.CompareTo(other.Rates.Count);
         }
     }
-
 
     class ItemFAT
     {
