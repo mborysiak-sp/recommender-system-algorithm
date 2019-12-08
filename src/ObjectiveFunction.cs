@@ -14,7 +14,7 @@ namespace RecommenderSystem
 			{
 				for (int p = 0; p < P.ColumnCount; p++)
 				{
-					firstSum += Math.Pow(R[u, p] - (U.GetTransposed().GetVector(u) * P.GetVector(p)).Data[0, 0], 2);
+					firstSum += Math.Pow(R[u, p] - (U.GetVector(u).GetTransposed() * P.GetVector(p)).Data[0, 0], 2);
 				}
 			}
 
