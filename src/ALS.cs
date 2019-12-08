@@ -23,7 +23,7 @@ namespace RecommenderSystem
 
         Dictionary<Tuple<int, int>, int> ValuesSavedForHidingTest;
 
-        public void HidingTest(double lambda, int iterations, int percentToHide)
+        public void HidingTest(double lambda, int iterations, double percentToHide)
         {
 
             ValuesSavedForHidingTest = R.PrepareToHidingTest(percentToHide);
