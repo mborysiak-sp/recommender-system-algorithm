@@ -23,12 +23,28 @@ namespace RecommenderSystem
 
         Dictionary<Tuple<int, int>, int> ValuesSavedForHidingTest;
 
-        public void HidingTest(double lambda, int iterations)
+        public void HidingTest(double lambda, int iterations, int percentToHide)
         {
-            ValuesSavedForHidingTest = R.PrepareToHidingTest(1);
+
+            ValuesSavedForHidingTest = R.PrepareToHidingTest(percentToHide);
             Execute(lambda, iterations);
-            
-            
+
+            Console.WriteLine("Wyniki testu zakrywania: ");
+            foreach (var item in ValuesSavedForHidingTest)
+            {
+                var expected = item.Value;
+
+                int userID = item.Key.Item1;
+                int productID = item.Key.Item2;
+
+                double real = 0;
+                for (int row = 0; row < countOfFactors; row++)
+                {
+                    real += U.Data[row, userID] * P.Data[row, productID];
+                }
+
+                Console.WriteLine("Oczekiwana: " + expected + ", Rzeczywista: " + real + ", różnica: " + Math.Abs(expected - real));
+            }
         }
 
         public void Execute(double lambda, int iterations) 
