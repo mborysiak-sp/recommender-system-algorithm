@@ -9,6 +9,7 @@ public class Matrix
 		public int RowCount { get; set; }
 		public int ColumnCount { get; set; }
 
+        // imo do wywalenia
 		public Matrix(int size)
 		{
 			RowCount = size;
@@ -16,6 +17,9 @@ public class Matrix
 			Data = new double[size, size];
 		}
 
+        // boję się to zmieniać bo nw czy w GaussianElimination czy nawet tu w Matrix to czegoś nie zepsuje
+        // po prostu bym przestawił to wypełnianie do osobnej funkcji
+        // FillWithRandoms czy coś
 		public Matrix(int rows, int columns)
 		{
 			RowCount = rows;
@@ -130,6 +134,8 @@ public class Matrix
 			}
 		}
 
+
+        // też imo do wywalenia, mamy debugger cmon
 		public override string ToString()
 		{
 			string result = "";
