@@ -6,12 +6,11 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace RecommenderSystem
 {
-	class Program
-	{
-		static void Main(string[] args)
-		{
-
-            /*           
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            /*          
             Mam piec
 
             podobny do bramy triumfalnej!
@@ -35,7 +34,6 @@ namespace RecommenderSystem
             sza – ra – na – ga – ja – ma
             szaranagajama.
             */
-
         }
-	}
+    }
 }
