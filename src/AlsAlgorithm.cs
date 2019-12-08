@@ -1,7 +1,7 @@
 ﻿namespace RecommenderSystem 
 {
 public static class AlsAlgorithm 
-{
+{ 
     
     public static void Execute(Matrix U, Matrix P)     
     {
