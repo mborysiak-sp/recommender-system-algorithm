@@ -2,9 +2,9 @@
 
 namespace RecommenderSystem
 {
-	class GaussianElimination
+	static class Gauss
 	{
-		private void ZeroColumn(Matrix matrix, Matrix vector, int i)
+		private static void ZeroColumn(Matrix matrix, Matrix vector, int i)
 		{
 			for (int j = i + 1; j < matrix.RowCount; j++)
 			{
@@ -17,7 +17,7 @@ namespace RecommenderSystem
 			}
 		}
 
-		public Matrix Calculate(Matrix matrix, Matrix vector)
+		public static Matrix Calculate(Matrix matrix, Matrix vector)
 		{
 			for (int i = 0; i < matrix.RowCount; i++)
 			{
@@ -28,7 +28,7 @@ namespace RecommenderSystem
 			return GetResults(matrix, vector);
 		}
 
-		private Matrix GetResults(Matrix matrix, Matrix vector)
+		private static Matrix GetResults(Matrix matrix, Matrix vector)
 		{
 			var results = new Matrix(matrix.RowCount, 1);
 
@@ -45,7 +45,7 @@ namespace RecommenderSystem
 			return results;
 		}
 
-		private void PartialPivot(Matrix matrix, Matrix vector, int p)
+		private static void PartialPivot(Matrix matrix, Matrix vector, int p)
 		{
 			for (int j = p; j < matrix.RowCount; j++)
 				if (Math.Abs(matrix.Data[p, p]) < Math.Abs(matrix.Data[j, p]))
