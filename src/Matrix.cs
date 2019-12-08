@@ -25,7 +25,10 @@ public class Matrix
 			RowCount = rows;
 			ColumnCount = columns;
 			Data = new double[rows, columns];
-			
+		}
+	
+		public FillRandom() 
+		{
 			Random random = new Random();
 			for (int i = 0; i < RowCount; i++)
 			{
