@@ -9,14 +9,6 @@ public class Matrix
 		public int RowCount { get; set; }
 		public int ColumnCount { get; set; }
 
-        // imo do wywalenia
-		public Matrix(int size)
-		{
-			RowCount = size;
-			ColumnCount = size;
-			Data = new double[size, size];
-		}
-
         // boję się to zmieniać bo nw czy w GaussianElimination czy nawet tu w Matrix to czegoś nie zepsuje
         // po prostu bym przestawił to wypełnianie do osobnej funkcji
         // FillWithRandoms czy coś
