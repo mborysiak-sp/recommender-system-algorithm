@@ -117,7 +117,7 @@ namespace RecommenderSystem
 
                     for (int col = 0; col < Uip.ColumnCount; col++) 
                     {
-                        int rating = R[p, usersWhoRatedP[col]];
+                        int rating = R[usersWhoRatedP[col], p];
 
                         for (int row = 0; row < countOfFactors; row++) 
                         {
