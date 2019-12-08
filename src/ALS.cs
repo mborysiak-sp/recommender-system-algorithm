@@ -8,6 +8,9 @@ namespace RecommenderSystem.src
     {
         private RMatrix R;
         private Matrix U, P;
+        
+        U.FillRandom();
+        P.FillRandom();
 
         private int countOfFactors;
 
