@@ -12,7 +12,7 @@ namespace RecommenderSystem
 	
 			for (int u = 0; u < U.RowCount; u++)
 				for (int p = 0; p < P.RowCount; p++)
-					firstSum += Math.Pow(R.Search(u, p) - (U.GetTransposed().GetVector(u) * P.GetVector(p)).Data[0, 0], 2);
+					firstSum += Math.Pow(R[u, p] - (U.GetTransposed().GetVector(u) * P.GetVector(p)).Data[0, 0], 2);
 			
 			for (int u = 0; u < U.RowCount; u++)
 				secondSum += U.GetVector(u).GetSquaredNorm();
