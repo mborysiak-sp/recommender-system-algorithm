@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 
 namespace RecommenderSystem
 {
@@ -29,6 +30,32 @@ namespace RecommenderSystem
 			Fill(data);
 		}
 
+		public Matrix GetVector(int number)
+		{
+			Matrix matrix = new Matrix(RowCount, 1);
+
+			for (int i = 0; i < RowCount; i++)
+			{
+				matrix.Data[i, 0] = Data[i, 0];
+			}
+
+			return matrix;
+		}
+
+		public double GetSquaredNorm()
+		{
+			double result = 0;
+
+			if (ColumnCount != 1)
+				return result;
+			else
+			{
+				foreach (double value in Data)
+					result += Math.Pow(value,2);
+
+				return result;
+			}
+		}
 
 		public void Fill(double[,] numbers)
 		{
