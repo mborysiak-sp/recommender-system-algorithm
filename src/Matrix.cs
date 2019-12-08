@@ -26,18 +26,6 @@ public class Matrix
 			ColumnCount = columns;
 			Data = new double[rows, columns];
 		}
-	
-		public FillRandom() 
-		{
-			Random random = new Random();
-			for (int i = 0; i < RowCount; i++)
-			{
-				for (int j = 0; j < ColumnCount; j++)
-				{
-					Data[i, j] = random.NextDouble();
-				}
-			}
-		}
 
 		public Matrix(int rows, int columns, double[,] data)
 		{
@@ -56,6 +44,18 @@ public class Matrix
 			}
 
 			return matrix;
+		}
+
+		public void FillRandom() 
+		{
+			Random random = new Random();
+			for (int i = 0; i < RowCount; i++)
+			{
+				for (int j = 0; j < ColumnCount; j++)
+				{
+					Data[i, j] = random.NextDouble();
+				}
+			}
 		}
 
 		public double GetSquaredNorm()
