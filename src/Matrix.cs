@@ -21,13 +21,21 @@ public class Matrix
 			RowCount = rows;
 			ColumnCount = columns;
 			Data = new double[rows, columns];
+			Random random = new Random();
+			for (int i = 0; i < RowCount; i++)
+			{
+				for (int j = 0; j < ColumnCount; j++)
+				{
+					Data[i, j] = random.NextDouble();
+				}
+			}
 		}
 
 		public Matrix(int rows, int columns, double[,] data)
 		{
 			RowCount = rows;
 			ColumnCount = columns;
-			Fill(data);
+			Data = data;
 		}
 
 		public Matrix GetVector(int number)
@@ -55,35 +63,6 @@ public class Matrix
 
 				return result;
 			}
-		}
-
-		public void Fill(double[,] numbers)
-		{
-			Data = numbers;
-		}
-
-		public void Fill()
-		{
-			for (int i = 0; i < RowCount; i++)
-			{
-				for (int j = 0; j < ColumnCount; j++)
-				{
-					Data[i, j] = GetRandomNumber();
-				}
-			}
-		}
-
-		private static double GetRandomNumber()
-		{
-			return GetRandRange() / Math.Pow(2, 16);
-		}
-
-		private static int GetRandRange()
-		{
-			int min = (int)Math.Round(-Math.Pow(2, 16));
-			int max = (int)Math.Round(Math.Pow(2, 16) - 1);
-			Random rand = new Random();
-			return rand.Next(min, max);
 		}
 
 		public static Matrix operator *(Matrix leftFactor, Matrix rightFactor)
