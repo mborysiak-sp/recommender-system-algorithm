@@ -25,7 +25,6 @@ namespace RecommenderSystem
 
         public void HidingTest(double lambda, int iterations, int percentToHide)
         {
-
             ValuesSavedForHidingTest = R.PrepareToHidingTest(percentToHide);
             Execute(lambda, iterations);
 
@@ -81,17 +80,12 @@ namespace RecommenderSystem
                         }
                     }
                     // W tym miejscu Vu jest gotowe do użytku
-
-                    // Gauss statyczny : Krzychu
+                    
                     Matrix X = Gauss.Calculate(Au, Vu);
 
                     for (int row = 0; row < countOfFactors; row++) 
                     {
                         U.Data[row, u] = X.Data[row, 0];
-                    }
-
-                    if (k != 0) {
-                        Console.WriteLine($"1 wewnetrzny for - iteracja {u}");
                     }
                 }
 
@@ -117,7 +111,7 @@ namespace RecommenderSystem
 
                     for (int col = 0; col < Uip.ColumnCount; col++) 
                     {
-                        int rating = R[p, usersWhoRatedP[col]];
+                        int rating = R[usersWhoRatedP[col], p];
 
                         for (int row = 0; row < countOfFactors; row++) 
                         {
@@ -132,7 +126,6 @@ namespace RecommenderSystem
                     {
                         P.Data[row, p] = X.Data[row, 0];
                     }
-                    Console.WriteLine($"p = {p}");
                 }
                 ObjectiveFunction.Calculate(R, U, P, lambda);
             }
