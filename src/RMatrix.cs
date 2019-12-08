@@ -38,8 +38,8 @@ namespace RecommenderSystem
         }
 
         public int this[int u, int p] => Search(u, p);
-
-        private int Search(int u, int p)
+		
+        public int Search(int u, int p)
         {
             var search = Tuple.Create(u, p);
             if (!ratings.ContainsKey(search))

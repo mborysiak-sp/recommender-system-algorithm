@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RecommenderSystem.src
+namespace RecommenderSystem
 {
 	static class ObjectiveFunction
 	{
