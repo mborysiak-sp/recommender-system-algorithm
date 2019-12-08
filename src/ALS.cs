@@ -87,7 +87,8 @@ namespace RecommenderSystem {
                     }
                 }
 
-                Console.WriteLine($"Iteracja {k + 1}) Wartość funkcji celu = {ObjectiveFunction.Calculate(R, U, P, 0.1)}");
+                Console.WriteLine($"Iteracja {k + 1}:");
+                ObjectiveFunction.Calculate(R, U, P, lambda);
             }
         }
     }
