@@ -7,6 +7,8 @@ namespace RecommenderSystem
 {
 	static class ObjectiveFunction
 	{
+		static double lastResult = 1;
+		
 		public static double Calculate(RMatrix R, Matrix U, Matrix P, double lambda)
 		{
 			double firstSum = 0, secondSum = 0, thirdSum = 0;
@@ -29,7 +31,12 @@ namespace RecommenderSystem
 				thirdSum += P.GetVector(p).GetSquaredNorm();
 			}
 
-			return firstSum + lambda * (secondSum + thirdSum);
+			double result = firstSum + lambda * (secondSum + thirdSum);
+
+		    	Console.WriteLine($"{result/lastResult*100}");
+		    	lastResult = result;
+
+		    	return result;
 		}
 	}
 }

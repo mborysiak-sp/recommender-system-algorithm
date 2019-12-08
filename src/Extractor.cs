@@ -5,10 +5,6 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 
-
-// UŻYWAJCIE JEDYNEJ METODY STATYCZNEJ I BĘDZIE GIT
-
-
 namespace RecommenderSystem
 {
     class Extractor

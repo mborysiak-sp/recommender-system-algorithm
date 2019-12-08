@@ -21,7 +21,18 @@ namespace RecommenderSystem
             countOfFactors = iloscFaktorow;
         }
 
-        public void Execute(double lambda, int iterations) {
+        Dictionary<Tuple<int, int>, int> ValuesSavedForHidingTest;
+
+        public void HidingTest(double lambda, int iterations)
+        {
+            ValuesSavedForHidingTest = R.PrepareToHidingTest(1);
+            Execute(lambda, iterations);
+            
+            
+        }
+
+        public void Execute(double lambda, int iterations) 
+        {
             for (int k = 0; k < iterations; k++) 
             {
                 for (int u = 0; u < R.u; u++) 
@@ -107,8 +118,8 @@ namespace RecommenderSystem
                     }
                     Console.WriteLine($"p = {p}");
                 }
-
-                Console.WriteLine($"Iteracja {k + 1}) Wartość funkcji celu = {ObjectiveFunction.Calculate(R, U, P, lambda)}");
+                Console.WriteLine($"Iteracja {k + 1}:");
+                ObjectiveFunction.Calculate(R, U, P, lambda);
             }
         }
     }
