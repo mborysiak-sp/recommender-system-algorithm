@@ -8,9 +8,6 @@ namespace RecommenderSystem
     {
         private RMatrix R;
         private Matrix U, P;
-        
-        U.FillRandom();
-        P.FillRandom();
 
         private int countOfFactors;
 
@@ -18,7 +15,9 @@ namespace RecommenderSystem
         {
             R = Extractor.createR(dawkaPliku, iloscProduktowMacierzyR);
             U = new Matrix(iloscFaktorow, R.u);
+            U.FillRandom();
             P = new Matrix(iloscFaktorow, R.p);
+            P.FillRandom();
             countOfFactors = iloscFaktorow;
             // Nw czy tak być powinno, że konstruktor domyślnie zapełnia randomami, no ale ok
             // Ok patrz linijka 33
