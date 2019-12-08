@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace RecommenderSystem
 {
@@ -6,42 +10,32 @@ namespace RecommenderSystem
 	{
 		static void Main(string[] args)
 		{
-			Matrix a = new Matrix(3,1);
-			a.Fill();
-			Console.WriteLine($"A: \n{a}");
-			
-			//Matrix x = new Matrix(3, 1);
-			//x.Fill();
-			
-			
-			Matrix aTr = a.GetTransposed();
-			Console.WriteLine($"Transposed A: \n{aTr}");
 
-			Matrix result = a * aTr;
+            /*           
+            Mam piec
 
-			result.AddLambdaMatrix(21.37);
-			Console.WriteLine($"Au: \n{result}");
+            podobny do bramy triumfalnej!
 
-			/*
-			GaussianElimination gaussianElimination = new GaussianElimination();
+            Zabierają mi piec
+            podobny do bramy triumfalnej!!
 
-			Console.WriteLine($"Calculated X: {gaussianElimination.Calculate(a, b)}");
+            Oddajcie mi
+            piec podobny do bramy triumfalnej!!!
 
-			Console.WriteLine($"Original X: {x}");
-			*/
+            Została po nim tylko
 
+            szara
+            naga
+            jama
+            szara naga jama.
 
-			/*
-            RMatrix R = Extractor.createR(10000, 100);
+            I to mi wystarczy:
+            szara naga jama
+            szara naga jama
+            sza – ra – na – ga – ja – ma
+            szaranagajama.
+            */
 
-            var test1 = R.FindAllProductsRatedByUser(150);
-            var test2 = R.FindAllUsersWhoRatedProduct(0);
-            RMatrix R2 = R;
-
-            var test3 = R.PrepareToHidingTest(2);
-            Console.WriteLine();
-*/
-
-		}
+        }
 	}
 }
