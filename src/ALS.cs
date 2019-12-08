@@ -21,15 +21,17 @@ namespace RecommenderSystem
             countOfFactors = iloscFaktorow;
         }
 
+        
         Dictionary<Tuple<int, int>, int> ValuesSavedForHidingTest;
 
         public void HidingTest(double lambda, int iterations, double percentToHide)
         {
-
             ValuesSavedForHidingTest = R.PrepareToHidingTest(percentToHide);
             Execute(lambda, iterations);
 
-            Console.WriteLine("Wyniki testu zakrywania: ");
+            double sumOfErrors = 0;
+
+            Console.WriteLine("Wyniki testu zakrywania");
             foreach (var item in ValuesSavedForHidingTest)
             {
                 var expected = item.Value;
@@ -43,8 +45,12 @@ namespace RecommenderSystem
                     real += U.Data[row, userID] * P.Data[row, productID];
                 }
 
-                Console.WriteLine("Oczekiwana: " + expected + ", Rzeczywista: " + real + ", różnica: " + Math.Abs(expected - real));
+                double diff = Math.Abs(expected - real);
+                Console.WriteLine("Oczekiwana: " + expected + ", Rzeczywista: " + real + ", różnica: " + diff);
+                sumOfErrors += diff;
             }
+
+            Console.WriteLine("Suma błędów: " + sumOfErrors);
         }
 
         public void Execute(double lambda, int iterations) 
