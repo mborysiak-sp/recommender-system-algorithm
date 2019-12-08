@@ -238,7 +238,7 @@ namespace RecommenderSystem
             try
             {
                 ItemFAT item = new ItemFAT();
-                using StreamReader sr = new StreamReader("amazon-meta.txt");
+                using StreamReader sr = new StreamReader("../../../src/amazon-meta.txt");
                 while (sr.Peek() >= 0)
                 {
                     string line = sr.ReadLine();

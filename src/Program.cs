@@ -10,7 +10,6 @@ namespace RecommenderSystem
     {
         static void Main(string[] args)
         {
-           
         //
         ALS als1 = new ALS(3,10000,100);
         als1.Execute(0.1,5);
