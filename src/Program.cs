@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace RecommenderSystem
 {
@@ -21,7 +25,7 @@ namespace RecommenderSystem
 
 			result.AddLambdaMatrix(21.37);
 			Console.WriteLine($"Au: \n{result}");
-
+			
 			/*
 			GaussianElimination gaussianElimination = new GaussianElimination();
 
@@ -29,9 +33,7 @@ namespace RecommenderSystem
 
 			Console.WriteLine($"Original X: {x}");
 			*/
-
-
-			/*
+			
             RMatrix R = Extractor.createR(10000, 100);
 
             var test1 = R.FindAllProductsRatedByUser(150);
@@ -40,8 +42,6 @@ namespace RecommenderSystem
 
             var test3 = R.PrepareToHidingTest(2);
             Console.WriteLine();
-*/
-
 		}
 	}
 }
