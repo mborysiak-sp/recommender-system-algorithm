@@ -38,6 +38,7 @@ namespace RecommenderSystem
                     () => new Test("TEST_1_8").Execute(3, dawkaPliku, 1050, lambda, iterations, percentToHide),
                     ///*
                     () => new Test("TEST_1_9").Execute(4, dawkaPliku, 1050, lambda, iterations, percentToHide)
+                    
                 //*/
                     
                     //test dawki pliku
