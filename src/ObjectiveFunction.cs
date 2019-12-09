@@ -34,10 +34,11 @@ namespace RecommenderSystem
 		    Console.WriteLine($"{result / lastResult * 100}");
 		    lastResult = result;
 		    
+		    //nwm czy konieczne
 		    ///////////////////////////////////////ZAPISYWANIE TO PLIKU
-	        File.WriteAllText(
+		    File.WriteAllText(
 		        $@"../../../src/results/{testName} {dateTime.ToString().Replace(":", "_")}.txt",
-		        $"{result / lastResult * 100}\n"
+		        $"Jakiś procent czy coś: {result / lastResult * 100}\n\n"
 		        );
 		    return result;
 		}

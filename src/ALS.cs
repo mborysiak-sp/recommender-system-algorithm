@@ -52,8 +52,12 @@ namespace RecommenderSystem
                 }
 
                 double diff = Math.Abs(expected - real);
-                Console.WriteLine("Oczekiwana: " + expected + ", Rzeczywista: " + real + ", różnica: " + diff);
+                Console.WriteLine("Oczekiwana: " + expected + ", Rzeczywista: " + real + ", Różnica: " + diff);
                 sumOfErrors += diff;
+                File.AppendAllText(
+                    $@"../../../src/results/{testName} {dateTime.ToString().Replace(":", "_")}.txt",
+                    $"Oczekiwana:{expected}, Rzeczywista: {real}, Różnica: {diff}\n"
+                    );
             }
             Console.WriteLine("Suma błędów: " + sumOfErrors);
             
@@ -61,7 +65,7 @@ namespace RecommenderSystem
             File.AppendAllText(
                 $@"../../../src/results/{testName} {dateTime.ToString().Replace(":", "_")}.txt",
                 
-                $"Suma błędów: {sumOfErrors}\n" +
+                $"\nSuma błędów: {sumOfErrors}\n" +
                          $"Średni błąd: {sumOfErrors / ValuesSavedForHidingTest.Count}\n"
                 );
         }

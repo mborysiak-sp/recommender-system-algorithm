@@ -35,7 +35,7 @@ namespace RecommenderSystem
                 $"Ilosc produktow macierzy R: {iloscProduktowMacierzyR}\n" +
                 $"Lambda:                     {lambda}\n" +
                 $"Ilość iteracji:             {iterations}\n" +
-                $"Zakryty procent :           {percentToHide}\n"
+                $"Zakryty procent:            {percentToHide}\n"
                 );
         }
     }
