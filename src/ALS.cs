@@ -62,7 +62,7 @@ namespace RecommenderSystem
                 $@"../../../src/results/{testName} {dateTime.ToString().Replace(":", "_")}.txt",
                 
                 $"Suma błędów: {sumOfErrors}\n" +
-                         $"Średni błąd: {sumOfErrors/ValuesSavedForHidingTest.Count}\n"
+                         $"Średni błąd: {sumOfErrors / ValuesSavedForHidingTest.Count}\n"
                 );
         }
 
