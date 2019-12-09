@@ -6,22 +6,28 @@ namespace RecommenderSystem
 {
     public class Test 
     {
-        public static void Execute(int iloscFaktorow, int dawkaPliku, int iloscProduktowMacierzyR, 
+        private string testName;
+
+        public Test(string testName)
+        {
+            this.testName = testName;
+        }
+
+        public void Execute(int iloscFaktorow, int dawkaPliku, int iloscProduktowMacierzyR, 
                             double lambda, int iterations, double percentToHide) 
         {
             DateTime dateTime = DateTime.Now;
-            
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start(); 
             
-            ALS als = new ALS(iloscFaktorow, dawkaPliku, iloscProduktowMacierzyR, dateTime);
+            ALS als = new ALS(iloscFaktorow, dawkaPliku, iloscProduktowMacierzyR, testName, dateTime);
             als.HidingTest(lambda, iterations, percentToHide);
             
             stopwatch.Stop();
             
             ///////////////////////////////////////ZAPISYWANIE TO PLIKU
             File.AppendAllText(
-                $@"../../../src/results/Test {dateTime.ToString().Replace(":", "_")}.txt",
+                $@"../../../src/results/{testName} {dateTime.ToString().Replace(":", "_")}.txt",
                 "--------------------------------------------------------------------------------------\n" +
                 $"Czas wykonania:             {stopwatch.Elapsed}\n" + 
                 $"Ilość faktorów:             {iloscFaktorow}\n" +

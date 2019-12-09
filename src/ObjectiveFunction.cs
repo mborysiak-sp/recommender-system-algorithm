@@ -7,7 +7,7 @@ namespace RecommenderSystem
 	{
 		static double lastResult = 1;
 		
-		public static double Calculate(RMatrix R, Matrix U, Matrix P, double lambda, DateTime dateTime)
+		public static double Calculate(RMatrix R, Matrix U, Matrix P, double lambda, string testName, DateTime dateTime)
 		{
 			double firstSum = 0, secondSum = 0, thirdSum = 0;
 
@@ -36,7 +36,7 @@ namespace RecommenderSystem
 		    
 		    ///////////////////////////////////////ZAPISYWANIE TO PLIKU
 	        File.WriteAllText(
-		        $@"../../../src/results/Test {dateTime.ToString().Replace(":", "_")}.txt",
+		        $@"../../../src/results/{testName} {dateTime.ToString().Replace(":", "_")}.txt",
 		        $"{result / lastResult * 100}\n"
 		        );
 		    return result;

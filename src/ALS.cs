@@ -11,9 +11,10 @@ namespace RecommenderSystem
 
         private int countOfFactors;
 
+        private string testName;
         private DateTime dateTime;
 
-        public ALS(int iloscFaktorow, int dawkaPliku, int iloscProduktowMacierzyR, DateTime dateTime) 
+        public ALS(int iloscFaktorow, int dawkaPliku, int iloscProduktowMacierzyR, string testName, DateTime dateTime) 
         {
             R = Extractor.createR(dawkaPliku, iloscProduktowMacierzyR);
             U = new Matrix(iloscFaktorow, R.u);
@@ -21,6 +22,8 @@ namespace RecommenderSystem
             P = new Matrix(iloscFaktorow, R.p);
             P.FillRandom();
             countOfFactors = iloscFaktorow;
+
+            this.testName = testName;
             this.dateTime = dateTime;
         }
 
@@ -56,8 +59,10 @@ namespace RecommenderSystem
             
             ///////////////////////////////////////ZAPISYWANIE TO PLIKU
             File.AppendAllText(
-                $@"../../../src/results/Test {dateTime.ToString().Replace(":", "_")}.txt",
-                $"Suma błędów: {sumOfErrors}\n"
+                $@"../../../src/results/{testName} {dateTime.ToString().Replace(":", "_")}.txt",
+                
+                $"Suma błędów: {sumOfErrors}\n" +
+                         $"Średni błąd: {sumOfErrors/ValuesSavedForHidingTest.Count}\n"
                 );
         }
 
@@ -142,7 +147,7 @@ namespace RecommenderSystem
                         P.Data[row, p] = X.Data[row, 0];
                     }
                 }
-                ObjectiveFunction.Calculate(R, U, P, lambda, dateTime);
+                ObjectiveFunction.Calculate(R, U, P, lambda, testName, dateTime);
             }
         }
     }
