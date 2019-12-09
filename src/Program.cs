@@ -26,7 +26,7 @@ namespace RecommenderSystem
                     () => new Test("TEST_2").Execute(6, dawkaPliku, iloscProduktowMacierzyR, lambda, iterations, percentToHide),
                     ///*
                     () => new Test("TEST_3").Execute(9, dawkaPliku, iloscProduktowMacierzyR, lambda, iterations, percentToHide),
-                    //*/
+                //*/
                     
                     //test dawki pliku
                 ///*
