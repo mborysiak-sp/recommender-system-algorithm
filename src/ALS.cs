@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.IO;
 
 namespace RecommenderSystem 
 {
@@ -11,7 +11,9 @@ namespace RecommenderSystem
 
         private int countOfFactors;
 
-        public ALS(int iloscFaktorow, int dawkaPliku, int iloscProduktowMacierzyR) 
+        private DateTime dateTime;
+
+        public ALS(int iloscFaktorow, int dawkaPliku, int iloscProduktowMacierzyR, DateTime dateTime) 
         {
             R = Extractor.createR(dawkaPliku, iloscProduktowMacierzyR);
             U = new Matrix(iloscFaktorow, R.u);
@@ -19,6 +21,7 @@ namespace RecommenderSystem
             P = new Matrix(iloscFaktorow, R.p);
             P.FillRandom();
             countOfFactors = iloscFaktorow;
+            this.dateTime = dateTime;
         }
 
         
@@ -49,11 +52,16 @@ namespace RecommenderSystem
                 Console.WriteLine("Oczekiwana: " + expected + ", Rzeczywista: " + real + ", różnica: " + diff);
                 sumOfErrors += diff;
             }
-
             Console.WriteLine("Suma błędów: " + sumOfErrors);
+            
+            ///////////////////////////////////////ZAPISYWANIE TO PLIKU
+            File.AppendAllText(
+                $@"../../../src/results/Test {dateTime.ToString().Replace(":", "_")}.txt",
+                $"Suma błędów: {sumOfErrors}\n"
+                );
         }
 
-        public void Execute(double lambda, int iterations) 
+        private void Execute(double lambda, int iterations) 
         {
             for (int k = 0; k < iterations; k++) 
             {
@@ -134,7 +142,7 @@ namespace RecommenderSystem
                         P.Data[row, p] = X.Data[row, 0];
                     }
                 }
-                ObjectiveFunction.Calculate(R, U, P, lambda);
+                ObjectiveFunction.Calculate(R, U, P, lambda, dateTime);
             }
         }
     }
