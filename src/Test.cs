@@ -26,8 +26,9 @@ namespace RecommenderSystem
             stopwatch.Stop();
             
             ///////////////////////////////////////ZAPISYWANIE TO PLIKU
-            File.AppendAllText(
-                $@"../../../src/results/{testName} {dateTime.ToString().Replace(":", "_")}.txt",
+            string pathString = $@"../../../src/results/{testName} {dateTime.ToString().Replace(":", "_").
+                Replace("\\", "-").Replace("/", "-")}.txt";
+            File.AppendAllText(pathString,
                 "--------------------------------------------------------------------------------------\n" +
                 $"Czas wykonania:             {stopwatch.Elapsed}\n" + 
                 $"Ilość faktorów:             {iloscFaktorow}\n" +

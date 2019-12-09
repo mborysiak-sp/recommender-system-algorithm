@@ -62,9 +62,9 @@ namespace RecommenderSystem
             Console.WriteLine("Suma błędów: " + sumOfErrors);
             
             ///////////////////////////////////////ZAPISYWANIE TO PLIKU
-            File.AppendAllText(
-                $@"../../../src/results/{testName} {dateTime.ToString().Replace(":", "_")}.txt",
-                
+            string pathString = $@"../../../src/results/{testName} {dateTime.ToString().Replace(":", "_").
+                Replace("\\", "-").Replace("/", "-")}.txt";
+            File.AppendAllText(pathString,
                 $"\nSuma błędów: {sumOfErrors}\n" +
                          $"Średni błąd: {sumOfErrors / ValuesSavedForHidingTest.Count}\n"
                 );

@@ -36,8 +36,9 @@ namespace RecommenderSystem
 		    
 		    //nwm czy konieczne
 		    ///////////////////////////////////////ZAPISYWANIE TO PLIKU
-		    File.WriteAllText(
-		        $@"../../../src/results/{testName} {dateTime.ToString().Replace(":", "_")}.txt",
+		    string pathString = $@"../../../src/results/{testName} {dateTime.ToString().Replace(":", "_").
+			    Replace("\\", "-").Replace("/", "-")}.txt";
+		    File.WriteAllText(pathString,
 		        $"Jakiś procent czy coś: {result / lastResult * 100}\n\n"
 		        );
 		    return result;
